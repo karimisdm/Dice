@@ -45,12 +45,14 @@
             margin-top: 100px;
             text-align: center;
         }
+
         .score {
             color: red;
             font-size: 30px;
             margin-left: 40px;
             margin-top: 10px;
         }
+
         .result {
             color: rgb(198, 17, 140);
             margin-top: 30px;
@@ -64,12 +66,12 @@
     <label class="lbl">Game between Player1 and Player2: Please select your chance</label>
     <div class="players">
         <div>
-            <button class="btn" onclick="getRandomNumber()">Player 1</button>
+            <button class="btn" onclick="getFirstScore()">Player 1</button>
             <p>Score of Player 1 : </p>
             <div id="scoreF" class="score"> </div>
         </div>
         <div>
-            <button class="btn" onclick="getSecondRandomNumber()">Player 2</button>
+            <button class="btn" onclick="getSecondScore()">Player 2</button>
             <p>Score of Player 2 : </p>
             <div id="scoreS" class="score"> </div>
         </div>
@@ -87,31 +89,45 @@
     let result = "";
 
 
-    const getRandomNumber = () => {
-        const score = Math.floor(Math.random() * 6 + 1);
+
+    const getRandomNum = (min, max) => {
+        const minCeiled = Math.ceil(min);
+        const maxFloored = Math.floor(max);
+        return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+
+    }
+
+
+    const getFirstScore = () => {
+        const score = getRandomNum(1, 6);
         console.log(score);
         resPlayer1 = score;
         const firstArea = document.getElementById("scoreF");
         firstArea.innerText = resPlayer1;
 
     };
-    const getSecondRandomNumber = () => {
-        const score = Math.floor(Math.random() * 6 + 1);
+    const getSecondScore = () => {
+        const score = getRandomNum(1, 6);
         console.log(score);
         resPlayer2 = score;
         const secondArea = document.getElementById("scoreS");
         secondArea.innerText = resPlayer2;
     };
     const playGame = () => {
-         let result = "";
+        let result = "";
+        let count1 = 0;
+        let count2 = 0;
+
         if (resPlayer1 > resPlayer2) {
-            result = "Player 1 is winner"
-            
+            result = "Player 1 is winner";
+            count1 += count1;
+
         } else if (resPlayer1 === resPlayer2) {
             result = "Your scores are same!"
-        } else{
-            result = "Player 2 is winner"
-        }
+        } else {
+            result = "Player 2 is winner";
+            count2 += count2;
+        };
 
         const scoreArea = document.getElementById("result");
         scoreArea.innerText = result;

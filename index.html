@@ -115,18 +115,14 @@
     };
     const playGame = () => {
         let result = "";
-        let count1 = 0;
-        let count2 = 0;
 
         if (resPlayer1 > resPlayer2) {
             result = "Player 1 is winner";
-            count1 += count1;
 
         } else if (resPlayer1 === resPlayer2) {
             result = "Your scores are same!"
         } else {
             result = "Player 2 is winner";
-            count2 += count2;
         };
 
         const scoreArea = document.getElementById("result");

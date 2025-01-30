@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            background-color: rgb(186, 186, 238);
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+        }
+
+        .players {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 10px 30px;
+            background-color: rgb(23, 95, 95);
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .lbl {
+            font-size: 30px;
+            color: rgb(7, 7, 161);
+            padding: 20px 40px;
+
+        }
+
+        .btnPlay {
+            padding: 10px 50px;
+            background-color: rgb(168, 59, 4);
+            border-radius: 10px;
+            color: white;
+        }
+
+        .game {
+            margin-top: 100px;
+            text-align: center;
+        }
+        .score {
+            color: red;
+            font-size: 30px;
+            margin-left: 40px;
+            margin-top: 10px;
+        }
+        .result {
+            color: rgb(198, 17, 140);
+            margin-top: 30px;
+            margin-left: 100px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <label class="lbl">Game between Player1 and Player2: Please select your chance</label>
+    <div class="players">
+        <div>
+            <button class="btn" onclick="getRandomNumber()">Player 1</button>
+            <p>Score of Player 1 : </p>
+            <div id="scoreF" class="score"> </div>
+        </div>
+        <div>
+            <button class="btn" onclick="getSecondRandomNumber()">Player 2</button>
+            <p>Score of Player 2 : </p>
+            <div id="scoreS" class="score"> </div>
+        </div>
+    </div>
+    <div class="game">
+        <button onclick="playGame()" class="btnPlay">Play</button>
+    </div>
+    <div id="result" class="result"></div>
+
+</body>
+
+<script>
+    let resPlayer1 = (null);
+    let resPlayer2 = (null);
+    let result = "";
+
+
+    const getRandomNumber = () => {
+        const score = Math.floor(Math.random() * 6 + 1);
+        console.log(score);
+        resPlayer1 = score;
+        const firstArea = document.getElementById("scoreF");
+        firstArea.innerText = resPlayer1;
+
+    };
+    const getSecondRandomNumber = () => {
+        const score = Math.floor(Math.random() * 6 + 1);
+        console.log(score);
+        resPlayer2 = score;
+        const secondArea = document.getElementById("scoreS");
+        secondArea.innerText = resPlayer2;
+    };
+    const playGame = () => {
+         let result = "";
+        if (resPlayer1 > resPlayer2) {
+            result = "Player 1 is winner"
+            
+        } else if (resPlayer1 === resPlayer2) {
+            result = "Your scores are same!"
+        } else{
+            result = "Player 2 is winner"
+        }
+
+        const scoreArea = document.getElementById("result");
+        scoreArea.innerText = result;
+    }
+
+
+</script>
+
+</html>
